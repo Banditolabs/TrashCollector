@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Trash List</h1>
+
+{% for trash in trash %}
+  <div class="card">
+    <a href="{% url 'detail' trash.id %}">
+      <div class="card-content">
+        <span class="card-title">{{ trash.name }}</span>
+        <p>Type: {{ trash.type }}</p>
+        <p>Description: {{ trash.description }}</p>
+      </div>
+    </a>
+  </div>
+{% endfor %}
+
+{% endblock %}

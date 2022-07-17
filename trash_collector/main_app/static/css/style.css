@@ -1,0 +1,20 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+  
+  main {
+    flex: 1 0 auto;
+  }
+  .nav-wrapper {
+    background-color: brown;
+  }
+  
+  footer {
+    padding-top: 0;
+    text-align: right;
+  }
+  .page-footer {
+    background-color: brown;
+  }
