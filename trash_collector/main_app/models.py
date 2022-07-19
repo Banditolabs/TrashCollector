@@ -4,27 +4,48 @@ from django.urls import reverse
 ACTIONS = (
     ('A', 'Admire'),
     ('D', 'Devour'),
-    ('B', 'Bathe'),
-    
+    ('B', 'Bathe'),  
+)
+USES = (
+    ('N', 'None'),
+    ('S', 'Smashing'),
+    ('C', 'Cutting'),
+    ('T', 'Tricking'),
+    ('M', 'Moving'),
+    ('E', 'Eating')
+)
+RATINGS = (
+    ('N', 'None'),
+    ('E', 'Effective'),
+    ('M', 'Mediocre'),
+    ('P', 'Poor')
 )
 
 # Create your models here.
 
-class Location(models.Model):
-    location = models.CharField(max_length=50)
-    rating = models.CharField(max_length=20)
+class Use(models.Model):
+    use = models.CharField(
+        max_length=1,
+        choices=USES,
+        default=USES[0][0]
+        )
+    rating = models.CharField(
+        max_length=1,
+        choices=RATINGS,
+        default=RATINGS[0][0]
+        )
 
     def __str__(self):
-        return self.name
+        return self.use
 
     def get_absolute_url(self):
-        return reverse('location_detail', kwargs={'pk': self.id})
+        return reverse('use_detail', kwargs={'pk': self.id})
 
 class Trash(models.Model):
     name = models.CharField(max_length=100)
     type = models.CharField(max_length=100)
     description = models.CharField(max_length=250)
-    location = models.ManyToManyField(Location)
+    uses = models.ManyToManyField(Use)
     def __str__(self):
         return self.name
     
