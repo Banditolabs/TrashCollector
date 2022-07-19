@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Use List</h1>
+
+{% for use in use_list %}
+  <a href="{% url 'use_detail' use.id %}">
+    <div class="card">
+        <div class="card-content">
+            <span class="card-title">{{ use.use }}</span>
+        </div>
+    </div>
+  </a>
+{% endfor %}
+
+{% endblock %}

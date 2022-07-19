@@ -4,6 +4,8 @@ from django.http import HttpResponse
 from .models import Trash, Use
 from .forms import FeedingForm, UseForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView
+
 
 # Create your views here.
 class TrashCreate(CreateView):
@@ -55,10 +57,21 @@ def add_feeding(request, trash_id):
   return redirect('detail', trash_id=trash_id)
 
 def assoc_use(request, trash_id, use_id):
-  Trash.objects.get(id=trash_id).use.add(use_id)
+  Trash.objects.get(id=trash_id).uses.add(use_id)
   return redirect('detail', trash_id=trash_id)
 
+class UseList(ListView):
+  model = Use
+
+class UseDetail(DetailView):
+  model = Use
 class UseCreate(CreateView):
   model = Use
   fields = '__all__'
+class UseUpdate(UpdateView):
+  model = Use
+  fields = '__all__'
+class UseDelete(DeleteView):
+  model = Use
+  success_url = '/uses/'
 

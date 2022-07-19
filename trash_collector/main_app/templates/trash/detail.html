@@ -49,12 +49,12 @@
   <!-- Column 1 -->
   <div class="col s6">
     <h3>{{ trash.name }}'s Uses</h3>
-    {% if trash.use.count %}
+    {% if trash.uses.count %}
       {% for use in trash.uses.all %}
         <div class="card">
           <div class="card-content">
             <span class="card-title">
-              Use: {{ use.category }}
+              Use: {{ use.use }}
             </span>
             <span class="card-title">
               Rating: {{ use.rating }}
