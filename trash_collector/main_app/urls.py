@@ -14,7 +14,7 @@ urlpatterns = [
     path('landfill/<int:trash_id>/assoc_uses/<int:use_id>/', views.assoc_use, name='assoc_use'),
     path('uses/', views.UseList.as_view(), name='uses_index'),
     path('uses/<int:pk>/', views.UseDetail.as_view(), name='use_detail'),
-    path('uses/create/', views.UseCreate.as_view(), name='use_create'),
+    path('uses/<int:trash_id>/create/', views.UseCreate.as_view(), name='use_create'),
     path('uses/<int:pk>/update/', views.UseUpdate.as_view(), name='use_update'),
     path('uses/<int:pk>/delete/', views.UseDelete.as_view(), name='use_delete'),
 ]   

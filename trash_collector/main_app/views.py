@@ -40,7 +40,8 @@ def trash_detail(request, trash_id):
   use_form = UseForm()
   ## render template, pass it the trash
   return render(request, 'trash/detail.html', { 
-    'trash': trash, 'feeding_form': feeding_form, 'use_form': use_form,
+    'trash': trash, 
+    'feeding_form': feeding_form, 'use_form': use_form,
     'uses': uses_not_found
     })
 
@@ -68,6 +69,7 @@ class UseDetail(DetailView):
 class UseCreate(CreateView):
   model = Use
   fields = '__all__'
+  
 class UseUpdate(UpdateView):
   model = Use
   fields = '__all__'

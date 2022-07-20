@@ -7,8 +7,8 @@
   <div class="col s6 col-offset-3">
     <div class="card">
       <div class="card-content">
-        <span class="card-title">{{ use.use }}</span>
-        <p>{{use.rating}}</p>
+        <span class="card-title">{{ use.get_use_display }}</span>
+        <p>{{use.get_rating_display}}</p>
       </div>
       <div class="card-action">
         <a href="{% url 'use_update' use.id %}">Edit</a>

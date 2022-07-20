@@ -2,15 +2,17 @@
 {% block content %}
 
 <h1>Use List</h1>
-
+<div class="card">
 {% for use in use_list %}
-  <a href="{% url 'use_detail' use.id %}">
-    <div class="card">
+    
         <div class="card-content">
-            <span class="card-title">{{ use.use }}</span>
+            <span class="card-title">{{ use.get_use_display }}</span>
+            <p>Rating: {{use.get_rating_display}}</p>
         </div>
-    </div>
-  </a>
+    
+    {% if use.get_rating_display == 'Poor'%}
+    <hr>
+    {%endif%}
 {% endfor %}
-
+</div>
 {% endblock %}

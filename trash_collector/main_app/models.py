@@ -25,18 +25,18 @@ RATINGS = (
 
 class Use(models.Model):
     use = models.CharField(
-        max_length=1,
+        max_length=50,
         choices=USES,
         default=USES[0][0]
         )
     rating = models.CharField(
-        max_length=1,
+        max_length=50,
         choices=RATINGS,
         default=RATINGS[0][0]
         )
 
     def __str__(self):
-        return self.use
+        return f"{self.get_use_display()}"
 
     def get_absolute_url(self):
         return reverse('use_detail', kwargs={'pk': self.id})

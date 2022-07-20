@@ -54,10 +54,10 @@
         <div class="card">
           <div class="card-content">
             <span class="card-title">
-              Use: {{ use.use }}
+              <b>Use: {{ use.get_use_display }}</b>
             </span>
             <span class="card-title">
-              Rating: {{ use.rating }}
+              Rating: {{ use.get_rating_display }}
             </span>
           </div>
         </div>
@@ -67,18 +67,30 @@
     {% endif %}
   </div>
   <!-- Column 2 -->
+  {% comment %} <div class="col s6">
+    <form action="{% url 'use_create' trash.id %}" method="post">
+      {% csrf_token %}
+      {{ use_form.as_p }}
+      <input type="submit" class="btn" value="Create Use">
+    </form>
+  </div>
+  <div class="col s6">
+  </div> {% endcomment %}
   <div class="col s6">
     <h3>Available Uses</h3>
-    {% if use.count %}
+    {% if uses.count %}
       {% for use in uses.all %}
         <div class="card">
           <div class="card-content">
             <span class="card-title">
-              {{ use.category }}
+              <b>Use: {{ use.get_use_display }}</b>
+            </span>
+            <span class="card-title">
+              Rating: {{ use.get_rating_display }}
             </span>
           </div>
           <div class="card-action">
-            <form action="" method="post">
+            <form action="{% url 'assoc_use' trash.id use.id %}" method="post">
               {% csrf_token %}
               <button type="submit" class="btn">Add</button>
             </form>
@@ -99,8 +111,5 @@
     setDefaultDate: true,
     autoClose: true
   });
-
-  var selectEl = document.getElementById('id_meal');
-  M.FormSelect.init(selectEl);
 </script>
 {% endblock %}
